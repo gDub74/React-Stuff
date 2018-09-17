@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import { list } from 'postcss';
- 
+
+
 class Counter extends Component {
-    state = { 
+    state = {  
         count: 0,
-        tags: ['tag1', 'tag2', 'tag3'],
+        // tags: ['tag1', 'tag2', 'tag3'],
     };
 
-    renderTags() {
-        if (this.state.tags.length === 0) {
-            return <p>There are no tags</p>
-        }
-        return this.state.tags.map(tag => <li key={tag}>{tag}</li>)
+    // renderTags() {
+    //     if (this.state.tags.length === 0) {
+    //         return <p>There are no tags</p>
+    //     }
+    //     return this.state.tags.map(tag => <li key={tag}>{tag}</li>)
+    // }
+    handleIncrement = product => {
+        console.log(product);
+        this.setState({count: this.state.count + 1})
     }
 
     render() { 
         return (
             <React.Fragment>
                 <span className={this.getBadgeClasses()}> {this.formatCount()}</span>
-                <button className="btn btn-secondary btn-small">Increment</button>
-                <ul>
+                <button onClick={ () => this.handleIncrement(product) } className="btn btn-secondary btn-small">Increment</button>
+                {/* <ul>
                     { this.renderTags() }
-                </ul>
+                </ul> */}
             </React.Fragment>
         );
     }
@@ -37,5 +42,6 @@ class Counter extends Component {
         return count === 0 ? 'Zero' : count;
     }
 }
-  
+
+
 export default Counter;
